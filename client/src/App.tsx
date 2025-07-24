@@ -6,9 +6,10 @@ import Navbar from './components/navigations';
 // import About from './components/About';
 // import Services from './components/Services';
 // import Contact from './components/Contact';
-import Login from './components/login';
+import Login from './components/Login/Login';
 import ProtectedRoute from './components/core/protectedRoute';
-import { AuthProvider } from './components/core/auth/authContext';
+// import { AuthProvider } from './components/core/auth/authContext';
+import { AuthProvider } from './components/contexts/AuthContext';
 import 'semantic-ui-css/semantic.min.css'; // Semantic UI base
 import './assets/sematic-theme.css'; // Your custom styles
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -20,6 +21,7 @@ import './i18n';
 import ScrollToTop from './components/core/scrollToTop';
 import ClientAdvisorVoiceWizard from './components/chatbot/ClientAdvisorVoiceWizard';
 import VoiceAssistant from './components/chatbot/VoiceAssistant';
+import SignUp from './components/SignUp/SignUp';
 
 const App: React.FC = () => {
   return (
@@ -51,6 +53,7 @@ const App: React.FC = () => {
           <Route path="/education" element={<EducationPage />} />
           <Route path="/elearning" element={<ElearningPage />} />
           <Route path="/voiceWizard" element={<VoiceAssistant />} />
+          <Route path="/signup" element={<SignUp />} />
         </Routes>
       </Router>
     </AuthProvider>

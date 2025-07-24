@@ -1,11 +1,47 @@
 import React from 'react';
-import { Container, Header, Segment, Embed, Grid } from 'semantic-ui-react';
+import { Container, Header, Segment, Grid } from 'semantic-ui-react';
 import WidgetTile from './widgetTile';
 import './homePage.css';
+import { useAuth } from '../contexts/AuthContext'; // Adjust the import path as needed
+import { useNavigate } from 'react-router-dom';
 
 const HomePage: React.FC = () => {
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate('/login'); // redirect after logout
+    } catch (error) {
+      console.error('Logout failed:', error);
+    }
+  };
+
   return (
-    <div style={{ padding: '0 10px', backgroundColor: '#000000' }}>
+    <div style={{ padding: '0 10px', backgroundColor: '#000000', position: 'relative' }}>
+      {/* Logout button top right */}
+      <button
+        onClick={handleLogout}
+        style={{
+          position: 'absolute',
+          top: 10,
+          right: 10,
+          padding: '8px 12px',
+          backgroundColor: '#e74c3c',
+          color: 'white',
+          border: 'none',
+          borderRadius: 4,
+          cursor: 'pointer',
+          zIndex: 1000,
+          fontWeight: 'bold',
+        }}
+        data-testid="logout-btn"
+        aria-label="Logout"
+      >
+        Log Out
+      </button>
+
       <Container className="home-page-container">
         {/* Page Header */}
         <div className="hero-section">
@@ -34,7 +70,11 @@ const HomePage: React.FC = () => {
         </Segment>
 
         {/* Widgets Section */}
-        <Segment vertical className="widgets" style={{ backgroundColor: 'rgb(125 94 94 / 92%)' }}>
+        <Segment
+          vertical
+          className="widgets"
+          style={{ backgroundColor: 'rgb(125 94 94 / 92%)' }}
+        >
           <Header as="h2" textAlign="center">
             Explore Our Services
           </Header>
