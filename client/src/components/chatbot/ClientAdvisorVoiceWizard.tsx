@@ -16,12 +16,6 @@ interface ClientAdvisorVoiceWizardProps {
 }
 
 const questionsData: Question[] = [
-  {
-    key: 'education',
-    en: 'What is your education?',
-    hi: 'आपकी शिक्षा क्या है?',
-    mr: 'तुमचं शिक्षण काय आहे?',
-  },
   { key: 'age', en: 'What is your age?', hi: 'आपकी उम्र क्या है?', mr: 'तुमचं वय काय आहे?' },
   {
     key: 'salary',
@@ -35,19 +29,25 @@ const questionsData: Question[] = [
     hi: 'आप हर महीने कितनी बचत करते हैं?',
     mr: 'तुम दर महिन्याला किती बचत करता?',
   },
-  // {
-  //   key: 'support',
-  //   en: 'Which type of finance support do you need?',
-  //   hi: 'आपको किस प्रकार की वित्तीय सहायता की आवश्यकता है?',
-  //   mr: 'तुम्ही कोणत्याही सरकारी योजनेंत भाग घेतलाय का?',
-  // },
+  {
+    key: 'education',
+    en: 'What is your education?',
+    hi: 'आपकी शिक्षा क्या है?',
+    mr: 'तुमचं शिक्षण काय आहे?',
+  },
+  {
+    key: 'support',
+    en: 'How can I help you with your financial needs such as Investments, Business Loan etc.?',
+    hi: 'मैं आपकी निवेश, व्यापार ऋण आदि जैसी वित्तीय आवश्यकताओं में कैसे मदद कर सकता हूँ?',
+    mr: 'गुंतवणूक, व्यवसाय कर्ज इत्यादीसारख्या आर्थिक गरजांमध्ये मी तुम्हाला कशी मदत करू शकतो?',
+  }
 ];
 
 const ClientAdvisorVoiceWizard: React.FC<ClientAdvisorVoiceWizardProps> = ({ setAiResponse }) => {
   const [show, setShow] = useState<boolean>(false);
   const [current, setCurrent] = useState<number>(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
-  const [lang, setLang] = useState<'en' | 'hi' | 'mr'>('hi');
+  const [lang, setLang] = useState<'en' | 'hi' | 'mr'>('en');
   const [retryCount, setRetryCount] = useState<number>(0);
 
   const { transcript, listening, resetTranscript, browserSupportsSpeechRecognition } =

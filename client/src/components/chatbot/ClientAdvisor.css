@@ -1,3 +1,22 @@
 #root {
   height: auto;
 }
+
+h2.header-txt {
+  color: black;
+  background-color: white;
+  width: 45%;
+}
+
+.blink {
+  animation: blinker 1s linear infinite;
+  color: red!important; /* optional */
+  background-color: blanchedalmond;
+  width: 45%;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}

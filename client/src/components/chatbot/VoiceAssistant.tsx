@@ -2,54 +2,17 @@ import React, { useState } from 'react';
 import { Card, Spinner } from 'react-bootstrap';
 import { FaBullhorn, FaBrain } from 'react-icons/fa';
 import FeedbackWidget from './ClientAdvisorVoiceWizard';
+import { useNavigate } from 'react-router-dom';
 
 const VoiceAssistant: React.FC = () => {
   const [suggestions, setAiSuggestions] = useState<string>('');
-
-  const suggestionVideos = [
-    {
-      keyword: 'sukanya samriddhi',
-      title: 'Sukanya Samriddhi Yojana',
-      url: 'https://www.youtube.com/embed/dU2aM2vRdxQ',
-    },
-    {
-      keyword: 'mutual fund',
-      title: 'Mutual Funds Explained',
-      url: 'https://www.youtube.com/embed/4zK_LwPQjmw',
-    },
-    {
-      keyword: 'recurring deposit',
-      title: 'Recurring Deposit (RD)',
-      url: 'https://www.youtube.com/embed/RE1EgdFr0Y0',
-    },
-    {
-      keyword: 'fixed deposit',
-      title: 'Fixed Deposit (FD)',
-      url: 'https://www.youtube.com/embed/2ASfKePkaUI',
-    },
-    {
-      keyword: 'ppf',
-      title: 'Public Provident Fund (PPF)',
-      url: 'https://www.youtube.com/embed/ULe8WZKpi_o',
-    },
-    {
-      keyword: 'accident insurance',
-      title: 'Personal Accident Insurance Explained',
-      url: 'https://www.youtube.com/embed/L-AxbCDifjU',
-    },
-    {
-      keyword: 'term insurance',
-      title: 'Term Insurance Made Easy',
-      url: 'https://www.youtube.com/embed/qj-Fmz1z1O4',
-    },
-  ];
-
+  const navigate = useNavigate();
   const hasKeyword = (key: string) => suggestions.toLowerCase().includes(key.toLowerCase());
 
   return (
     <div className="container mt-5">
-      <h2>
-        <FaBullhorn /> Voice Assistant Main Screen
+      <h2 className='header-txt'>
+        <FaBullhorn /> AI Voice Enabled Financial Advisor
       </h2>
 
       {suggestions === 'loading' ? (
@@ -59,34 +22,23 @@ const VoiceAssistant: React.FC = () => {
         </Card>
       ) : suggestions ? (
         <>
-          <Card className="mt-4 shadow-sm border-success">
+          <Card className="mt-4 shadow-sm border-success" style={{ padding: '2rem' }}>
             <Card.Body>
-              <h5 className="text-success">
+              <h5 className="text-success" style={{ paddingBottom: '1rem' }}>
                 <FaBrain /> AI Suggestions:
               </h5>
               <p style={{ whiteSpace: 'pre-wrap' }}>{suggestions}</p>
+              <p
+                onClick={() => navigate('/elearning')}
+                className="ui text"
+                style={{ cursor: 'pointer', fontWeight: '600', color: '#27279b' }} >
+                Click here for your personlized learning suggestions!
+              </p>
             </Card.Body>
           </Card>
-          {suggestionVideos.map(({ keyword, title, url }) =>
-            hasKeyword(keyword) ? (
-              <Card key={keyword} className="mt-4 shadow-sm">
-                <Card.Body>
-                  <h5>{title}</h5>
-                  <iframe
-                    width="100%"
-                    height="315"
-                    src={url}
-                    title={title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                </Card.Body>
-              </Card>
-            ) : null,
-          )}
         </>
       ) : (
-        <p className="text-muted mt-4">Use the "Get to Know You" wizard to get suggestions.</p>
+        <p className="text-muted mt-4 blink" style={{fontWeight: '600', fontSize: '1.2em'}}>Use the "Get to Know You" wizard to get suggestions.</p>
       )}
 
       <FeedbackWidget setAiResponse={setAiSuggestions} />

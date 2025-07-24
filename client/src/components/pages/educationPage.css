@@ -23,8 +23,8 @@
           width: 40px;
         }
 
-        .logout-btn {
-          /* width: 80px!important; */
+        .sign-out {
+          font-size: 2em;
           margin-right: 15px;
         }
       }

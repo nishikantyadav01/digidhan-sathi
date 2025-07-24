@@ -81,12 +81,12 @@ const QuizPage: React.FC = () => {
               onDismiss={handleClose}
               header={
                 <div
-                  style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+                  style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
                 >
                   <span>Quiz Submitted!</span>
                 </div>
               }
-              content={`Your score is ${score}/10. 🎉`}
+              content={`Your score is ${score}/${quizQuestions.length}. 🎉`}
             />
           </div>
         </>

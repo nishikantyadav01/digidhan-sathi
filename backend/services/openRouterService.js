@@ -5,7 +5,7 @@ const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 
 const getFinancialSuggestions = async (userInput) => {
   const prompt = `
-You are a financial advisor. Based on this profile, suggest relevant financial products in simple language.
+You are a financial advisor. Based on this profile, suggest relevant financial products or loans in simple language and in 5 bullet points.
 
 Profile:
 ${JSON.stringify(userInput, null, 2)}
