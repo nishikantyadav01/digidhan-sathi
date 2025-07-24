@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap');
+
+.hero-section {
+  display: flex;
+  justify-content: center;
+  /* background: url('src/assets/images/premium_2.jpg') no-repeat;
+  background-size: 170px auto; */
+}
+
+div.home-page-container.ui.container {
+  background: url('src/assets/images/aleks-dorohovich.jpg');
+  background-size: cover;
+  width: 100%;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+
+.header-box {
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid #2185d0;
+  padding: 1rem 2rem !important;
+  margin: 0 auto;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2) !important;
+  width: 100%;
+}
+
+.main-title {
+  font-family: fantasy !important;
+  font-size: 4rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+
+  /* Gradient Text */
+  background: linear-gradient(90deg, #ee15e5, #00c6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* Optional Shadow */
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
+  margin-bottom: 1rem !important;
+}
+
+.ui.header.sub-title {
+  font-size: 1.5rem !important;
+  font-weight: 400 !important;
+  color: #b20d0d !important;
+  opacity: 0.9;
+  font-family: monospace !important;
+}
+
+.ui.center.aligned.header {
+  font-family: monospace !important;
+  opacity: 1;
+}
+
+.widgets-col {
+  display: flex !important;
+  justify-content: center;
+}
+
+.ui.segment.intro-video,
+.ui.segment.widgets {
+  border: none !important;
+}
+
+/* Animation keyframes */
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+/* Apply the animation to sub-title */
+.sub-title {
+  animation: slideInFromRight 1s ease-out forwards;
+  opacity: 0;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: #5c27ec;
+  margin-top: 0.5rem;
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+/* Apply the animation to sub-title */
+.main-title {
+  animation: slideInFromLeft 1s ease-out forwards;
+  opacity: 0;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: #0a3d62;
+  margin-top: 0.5rem;
+}
+
+.sub-title {
+  animation: slideInFromRight 1s ease-out 0.5s forwards;
+  margin-top: 0 !important;
+}
+
+.main-title {
+  animation: slideInFromLeft 1s ease-out 0.5s forwards;
+  margin-bottom: 0 !important;
+}

@@ -1,0 +1,80 @@
+import React from 'react';
+import { Container, Header, Segment, Card, Icon, Button } from 'semantic-ui-react';
+import EducationCard from './EducationCard';
+import { useNavigate } from 'react-router-dom';
+
+const educationServices = [
+  {
+    title: 'Scholarship Explorer',
+    image: '/assets/scholarship.jpg',
+    description:
+      'Find national and international scholarships that suit your child’s education level.',
+    link: '/scholarships',
+  },
+  {
+    title: 'Smart Savings Plans',
+    image: '/assets/savings.jpg',
+    description: 'Tailored savings plans to meet your education goals step-by-step.',
+    link: '/savings-plans',
+  },
+  {
+    title: 'Govt Schemes & Benefits',
+    image: '/assets/government.jpg',
+    description: 'Explore government-backed plans like Sukanya Samriddhi, PPF, and more.',
+    link: '/govt-benefits',
+  },
+  {
+    title: 'Scholarship Explorer',
+    image: '/assets/scholarship.jpg',
+    description:
+      'Find national and international scholarships that suit your child’s education level.',
+    link: '/scholarships',
+  },
+  {
+    title: 'Smart Savings Plans',
+    image: '/assets/savings.jpg',
+    description: 'Tailored savings plans to meet your education goals step-by-step.',
+    link: '/savings-plans',
+  },
+  {
+    title: 'Govt Schemes & Benefits',
+    image: '/assets/government.jpg',
+    description: 'Explore government-backed plans like Sukanya Samriddhi, PPF, and more.',
+    link: '/govt-benefits',
+  },
+];
+
+const EducationPage: React.FC = () => {
+  const navigate = useNavigate();
+  return (
+    <Container className="education-page" style={{ marginTop: '2em' }}>
+      <Segment basic textAlign="center" className="main-segment">
+        <div className="header-gradient">
+          <Header as="h2" icon textAlign="center" className="header-box">
+            <Icon name="graduation" circular />
+            <Header.Content>Children’s Higher Education Planning</Header.Content>
+            <Button
+              icon
+              circular
+              onClick={() => navigate('/')}
+              size="mini"
+              color="blue"
+              style={{ marginRight: '1em' }}
+              className="back-btn"
+            >
+              <Icon name="arrow left" />
+            </Button>
+          </Header>
+        </div>
+
+        <Card.Group centered stackable itemsPerRow={2} className="cards-grp">
+          {educationServices.map((service, i) => (
+            <EducationCard key={i} {...service} />
+          ))}
+        </Card.Group>
+      </Segment>
+    </Container>
+  );
+};
+
+export default EducationPage;

@@ -1,0 +1,110 @@
+.ui.container.education-page {
+  display: block;
+  width: 100% !important;
+  padding: 0 10px !important;
+  margin: 0 !important;
+  .ui.segment.main-segment {
+    border: none !important;
+    .ui.aligned.segment {
+      padding: 0 !important;
+    }
+    div.header-gradient {
+      background: linear-gradient(90deg, #64b5f6, #81c784); /* blue to green */
+      margin-bottom: 1em;
+      color: white !important;
+      border-radius: 16px;
+    }
+    h2.ui.header.header-box {
+      display: flex;
+      justify-content: flex-start;
+      margin: 0;
+      padding: 5px !important;
+      background: linear-gradient(90deg, #64b5f6, #81c784);
+      border-radius: 16px;
+      align-items: center;
+
+      i.graduation {
+        margin: 0;
+      }
+      .content {
+        display: flex;
+        align-items: center;
+        padding-left: 2rem;
+      }
+      .back-btn {
+        padding: 4px 8px !important;
+        font-size: 1rem !important;
+        height: 34px;
+        min-width: 88px;
+        line-height: 1 !important;
+      }
+
+      .back-btn .icon {
+        font-size: 1.6rem !important;
+        margin: 0 !important;
+      }
+    }
+    h4.ui.header {
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      padding: 5px 0;
+      color: #000 !important;
+    }
+    .ui.cards-grp {
+      display: flex;
+      justify-content: space-around;
+
+      a.ui.card {
+        width: calc(50% - 10em);
+      }
+    }
+    .cards-grp {
+      padding: 2em;
+      background: #f9fbe7; /* pale lime background */
+      border-radius: 16px;
+
+      .ui.cards:after:after {
+        content: none !important;
+      }
+    }
+    .cards-grp::after {
+      display: none !important;
+    }
+  }
+  .ui.raised.segment {
+    padding: 0 1em;
+  }
+
+  .education-card {
+    background: linear-gradient(135deg, #e0f7fa, #f1f8e9); /* light blue + green */
+    border-radius: 16px !important;
+    padding: 1em;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .education-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  }
+
+  .education-card .header {
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: 600;
+    color: #1a237e;
+  }
+
+  .education-card .description {
+    font-size: 1rem;
+    color: #37474f;
+  }
+
+  .header-box .content {
+    /* color: white !important; */
+  }
+
+  .header-box .icon {
+    /* color: white !important; */
+  }
+}

@@ -1,0 +1,54 @@
+/* src/semantic-theme.css */
+
+.ui.primary.button {
+  background-color: #0d43b3 !important;
+  color: white !important;
+}
+
+.ui.secondary.button {
+  background-color: #c1c6ce !important;
+  color: black !important;
+}
+
+.ui.menu {
+  background-color: #0d43b3 !important;
+  border: none !important;
+}
+
+.ui.menu .item {
+  color: white !important;
+}
+
+.ui.menu .active.item {
+  border-bottom: 2px solid #c1c6ce !important;
+  color: #c1c6ce !important;
+}
+
+.ui.segment {
+  border: 1px solid #c1c6ce !important;
+}
+
+.ui.header {
+  color: #0d43b3 !important;
+}
+
+.ui.menu {
+  margin: 0;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.App {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
