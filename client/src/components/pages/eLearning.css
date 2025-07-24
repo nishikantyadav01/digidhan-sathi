@@ -11,11 +11,15 @@
       margin-bottom: 1em;
       color: white !important;
       border-radius: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
     h2.ui.header.header-box {
       display: flex;
       justify-content: flex-start;
       margin: 0;
+      width: 82%;
       padding: 5px !important;
       align-items: center;
       background: linear-gradient(90deg, #64b5f6, #81c784); /* blue to green */
@@ -45,16 +49,28 @@
   .ui.raised.segment {
     padding: 0 1em;
   }
-  .back-btn {
-    padding: 4px 8px !important;
-    font-size: 1rem !important;
-    height: 34px;
-    min-width: 88px;
-    line-height: 1 !important;
+
+  .btn-block {
+    .ui.circular.button {
+      margin-right: 1.5rem !important;
+      width: 40px;
+    }
+
+    .logout-btn {
+      /* width: 80px!important; */
+      margin-right: 15px;
+    }
   }
 
-  .back-btn .icon {
-    font-size: 1.6rem !important;
+  .notification-button {
+    position: fixed;
+    top: 1rem;
+    right: 4rem;
+    z-index: 1000;
+  }
+
+  .logout-btn .icon {
+    font-size: 0.8rem !important;
     margin: 0 !important;
   }
 

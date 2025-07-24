@@ -13,6 +13,21 @@
       margin-bottom: 1em;
       color: white !important;
       border-radius: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .btn-block {
+        .ui.circular.button {
+          margin-right: 1.5rem !important;
+          width: 40px;
+        }
+
+        .logout-btn {
+          /* width: 80px!important; */
+          margin-right: 15px;
+        }
+      }
     }
     h2.ui.header.header-box {
       display: flex;
@@ -22,6 +37,7 @@
       background: linear-gradient(90deg, #64b5f6, #81c784);
       border-radius: 16px;
       align-items: center;
+      width: 82%;
 
       i.graduation {
         margin: 0;
@@ -30,18 +46,6 @@
         display: flex;
         align-items: center;
         padding-left: 2rem;
-      }
-      .back-btn {
-        padding: 4px 8px !important;
-        font-size: 1rem !important;
-        height: 34px;
-        min-width: 88px;
-        line-height: 1 !important;
-      }
-
-      .back-btn .icon {
-        font-size: 1.6rem !important;
-        margin: 0 !important;
       }
     }
     h4.ui.header {

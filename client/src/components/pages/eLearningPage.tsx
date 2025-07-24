@@ -32,6 +32,11 @@ const videos = [
 
 const ElearningPage: React.FC = () => {
   const navigate = useNavigate();
+
+  const handleNotificationClick = () => {
+    console.log('Notifications clicked!');
+  };
+
   return (
     <Container
       className="elearning-page"
@@ -42,18 +47,23 @@ const ElearningPage: React.FC = () => {
           <Header as="h2" icon textAlign="center" className="header-box">
             <Icon name="laptop" circular />
             <Header.Content>E-Learning Support</Header.Content>
-            <Button
-              icon
-              circular
-              onClick={() => navigate('/')}
-              size="mini"
-              color="blue"
-              style={{ marginRight: '1em' }}
-              className="back-btn"
-            >
-              <Icon name="arrow left" />
-            </Button>
           </Header>
+          <div className="btn-block">
+              <Button circular icon color="blue" size='mini' onClick={handleNotificationClick}>
+                <Icon name="bell" />
+              </Button>
+              <Button
+                color="blue"
+                className="logout-btn"
+                icon
+                size='medium'
+                labelPosition="left"
+                onClick={() => navigate('/login')}
+              >
+                <Icon name="sign-out" />
+                Logout
+              </Button>
+            </div>
         </div>
         <Grid vertical stackable columns={3} doubling className="elearning-grid">
           {videos.map((video, index) => (

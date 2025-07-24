@@ -1,120 +1,179 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap');
+.home-page {
+  background: linear-gradient(135deg, #e0f7fa, #f1f8e9, #fce4ec);
+  min-height: 100vh;
+  color: #333;
+  font-family: 'Poppins', sans-serif;
+}
 
+/* 🌤️ HERO SECTION: Subtle white-to-blue background + colorful heading gradient */
 .hero-section {
-  display: flex;
-  justify-content: center;
-  /* background: url('src/assets/images/premium_2.jpg') no-repeat;
-  background-size: 170px auto; */
-}
-
-div.home-page-container.ui.container {
-  background: url('src/assets/images/aleks-dorohovich.jpg');
-  background-size: cover;
-  width: 100%;
-  margin-left: 0px !important;
-  margin-right: 0px !important;
-}
-
-.header-box {
-  background: rgba(255, 255, 255, 0.95);
-  border: 2px solid #2185d0;
-  padding: 1rem 2rem !important;
-  margin: 0 auto;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2) !important;
-  width: 100%;
+  padding: 1rem;
+  text-align: center;
+  background: linear-gradient(120deg, #fffaf0, #fce3ec, #e0c3fc);
+  color: #1a237e;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .main-title {
-  font-family: fantasy !important;
-  font-size: 4rem !important;
-  font-weight: 700 !important;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  font-family: 'Rubik Glitch', sans-serif!important;
+  font-size: 4rem!important;
+  font-weight: 800!important;
+  letter-spacing: 1.5px;
+  text-align: center;
+  line-height: 1.2;
 
-  /* Gradient Text */
-  background: linear-gradient(90deg, #ee15e5, #00c6ff);
+  /* Stunning gradient text */
+  background: linear-gradient(90deg, #8E2DE2, #4A00E0, #00c9a7);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
-  /* Optional Shadow */
-  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
-  margin-bottom: 1rem !important;
+  /* Shimmer animation */
+  animation: shimmer 3s linear infinite;
+
+  /* Fancy text shadow */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.ui.header.sub-title {
-  font-size: 1.5rem !important;
-  font-weight: 400 !important;
-  color: #b20d0d !important;
-  opacity: 0.9;
-  font-family: monospace !important;
+/* Shimmer effect keyframes */
+@keyframes shimmer {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
 }
 
-.ui.center.aligned.header {
-  font-family: monospace !important;
-  opacity: 1;
+.hero-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  Button {
+    height: 40px;
+  }
 }
 
-.widgets-col {
+.btn-block {
+  .ui.circular.button {
+    margin-right: 1.5rem!important;
+    width: 40px;
+  }
+}
+
+.notification-button {
+  position: fixed;
+  top: 1rem;
+  right: 4rem;
+  z-index: 1000;
+}
+
+.hero-content .sub-title {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #37474f;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* 🧊 WIDGET AREA stays same as before */
+.widget-section {
+  padding: 3rem 1rem;
+}
+.widget-section .ui.grid > .row {
+  display: flex;
+  justify-content: space-between;
+  row-gap: 2rem;
+}
+
+/* Uniform card size and layout */
+.ui.card,
+.ui.cards > .card {
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   display: flex !important;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
 }
 
-.ui.segment.intro-video,
-.ui.segment.widgets {
-  border: none !important;
+/* Card hover effect */
+.ui.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2) !important;
 }
 
-/* Animation keyframes */
-@keyframes slideInFromRight {
+/* Image styling */
+.ui.card .image > img {
+  border-radius: 12px;
+  height: 140px;
+  object-fit: cover;
+}
+
+/* Card header (title) */
+.ui.card .header {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+/* Card description */
+.ui.card .description {
+  color: #333;
+  font-size: 0.95rem;
+  text-align: center;
+  margin-top: 0.5rem;
+  flex-grow: 1;
+}
+
+/* Optional link or button */
+.ui.card .extra a {
+  display: block;
+  color: #0057e7;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 1rem;
+  transition: color 0.3s;
+}
+
+.ui.card .extra a:hover {
+  color: #d72638;
+}
+
+/* 🎥 VIDEO SECTION: soft seafoam and pastel background */
+.video-section {
+  background: linear-gradient(to right, #e0f2f1, #f9fbe7, #fce4ec);
+  color: #333;
+  padding: 3rem 1rem;
+}
+
+.video-section iframe {
+  width: 100%;
+  max-width: 640px;
+  height: 360px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.video-title {
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
   from {
-    transform: translateX(100%);
     opacity: 0;
+    transform: translateY(10px);
   }
   to {
-    transform: translateX(0%);
     opacity: 1;
+    transform: translateY(0);
   }
-}
-
-/* Apply the animation to sub-title */
-.sub-title {
-  animation: slideInFromRight 1s ease-out forwards;
-  opacity: 0;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 500;
-  font-size: 1.5rem;
-  color: #5c27ec;
-  margin-top: 0.5rem;
-}
-
-@keyframes slideInFromLeft {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0%);
-    opacity: 1;
-  }
-}
-
-/* Apply the animation to sub-title */
-.main-title {
-  animation: slideInFromLeft 1s ease-out forwards;
-  opacity: 0;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 500;
-  font-size: 1.5rem;
-  color: #0a3d62;
-  margin-top: 0.5rem;
-}
-
-.sub-title {
-  animation: slideInFromRight 1s ease-out 0.5s forwards;
-  margin-top: 0 !important;
-}
-
-.main-title {
-  animation: slideInFromLeft 1s ease-out 0.5s forwards;
-  margin-bottom: 0 !important;
 }

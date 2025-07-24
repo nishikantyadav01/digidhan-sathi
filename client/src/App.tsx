@@ -1,11 +1,5 @@
-// src/App.tsx
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/navigations';
-// import Home from './components/home';
-// import About from './components/About';
-// import Services from './components/Services';
-// import Contact from './components/Contact';
 import Login from './components/Login/Login';
 import ProtectedRoute from './components/core/protectedRoute';
 // import { AuthProvider } from './components/core/auth/authContext';
@@ -19,16 +13,15 @@ import EducationPage from './components/pages/educationPage';
 import HomePage from './components/pages/homePage';
 import './i18n';
 import ScrollToTop from './components/core/scrollToTop';
-import ClientAdvisorVoiceWizard from './components/chatbot/ClientAdvisorVoiceWizard';
 import VoiceAssistant from './components/chatbot/VoiceAssistant';
 import SignUp from './components/SignUp/SignUp';
+import QuizPage from './components/fin-quiz/quiz-page';
 
 const App: React.FC = () => {
   return (
     <AuthProvider>
       <Router>
         <ScrollToTop />
-        <Navbar />
         <Routes>
           <Route
             path="/"
@@ -38,21 +31,12 @@ const App: React.FC = () => {
               </ProtectedRoute>
             }
           />
-          {/* <Route
-            path="/about"
-            element={
-              <ProtectedRoute>
-                <About />
-              </ProtectedRoute>
-            }
-          /> */}
-          {/* <Route path="/services" element={<Services />} />
-          <Route path="/contact" element={<Contact />} /> */}
           <Route path="/login" element={<Login />} />
-          <Route path="/chatbot" element={<ChatbotPage />} />
-          <Route path="/education" element={<EducationPage />} />
-          <Route path="/elearning" element={<ElearningPage />} />
-          <Route path="/voiceWizard" element={<VoiceAssistant />} />
+          <Route path="/chatbot" element={<ProtectedRoute><ChatbotPage /></ProtectedRoute>} />
+          <Route path="/education" element={<ProtectedRoute><EducationPage /></ProtectedRoute>} />
+          <Route path="/elearning" element={<ProtectedRoute><ElearningPage /></ProtectedRoute>} />
+          <Route path="/voiceWizard" element={<ProtectedRoute><VoiceAssistant /></ProtectedRoute>} />
+          <Route path="/quiz" element={<ProtectedRoute><QuizPage /></ProtectedRoute>} />
           <Route path="/signup" element={<SignUp />} />
         </Routes>
       </Router>

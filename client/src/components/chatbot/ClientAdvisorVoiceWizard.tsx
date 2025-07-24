@@ -35,12 +35,12 @@ const questionsData: Question[] = [
     hi: 'आप हर महीने कितनी बचत करते हैं?',
     mr: 'तुम दर महिन्याला किती बचत करता?',
   },
-  {
-    key: 'schemes',
-    en: 'Are you using any government scheme?',
-    hi: 'क्या आप किसी सरकारी योजना का उपयोग कर रहे हैं?',
-    mr: 'तुम्ही कोणत्याही सरकारी योजनेंत भाग घेतलाय का?',
-  },
+  // {
+  //   key: 'support',
+  //   en: 'Which type of finance support do you need?',
+  //   hi: 'आपको किस प्रकार की वित्तीय सहायता की आवश्यकता है?',
+  //   mr: 'तुम्ही कोणत्याही सरकारी योजनेंत भाग घेतलाय का?',
+  // },
 ];
 
 const ClientAdvisorVoiceWizard: React.FC<ClientAdvisorVoiceWizardProps> = ({ setAiResponse }) => {
@@ -211,7 +211,7 @@ const ClientAdvisorVoiceWizard: React.FC<ClientAdvisorVoiceWizardProps> = ({ set
         variant="warning"
         style={{
           position: 'fixed',
-          top: '40%',
+          top: '30%',
           right: '16px',
           transform: 'rotate(-90deg)',
           transformOrigin: 'right center',

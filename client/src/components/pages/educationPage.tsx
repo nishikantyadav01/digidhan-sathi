@@ -46,6 +46,10 @@ const educationServices = [
 
 const EducationPage: React.FC = () => {
   const navigate = useNavigate();
+
+  const handleNotificationClick = () => {
+    console.log('Notifications clicked!');
+  };
   return (
     <Container className="education-page" style={{ marginTop: '2em' }}>
       <Segment basic textAlign="center" className="main-segment">
@@ -53,18 +57,23 @@ const EducationPage: React.FC = () => {
           <Header as="h2" icon textAlign="center" className="header-box">
             <Icon name="graduation" circular />
             <Header.Content>Children’s Higher Education Planning</Header.Content>
-            <Button
-              icon
-              circular
-              onClick={() => navigate('/')}
-              size="mini"
-              color="blue"
-              style={{ marginRight: '1em' }}
-              className="back-btn"
-            >
-              <Icon name="arrow left" />
-            </Button>
           </Header>
+          <div className="btn-block">
+            <Button circular icon color="blue" size="mini" onClick={handleNotificationClick}>
+              <Icon name="bell" />
+            </Button>
+            <Button
+              color="blue"
+              className="logout-btn"
+              icon
+              size="medium"
+              labelPosition="left"
+              onClick={() => navigate('/login')}
+            >
+              <Icon name="sign-out" />
+              Logout
+            </Button>
+          </div>
         </div>
 
         <Card.Group centered stackable itemsPerRow={2} className="cards-grp">
