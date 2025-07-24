@@ -16,13 +16,13 @@ interface ClientAdvisorVoiceWizardProps {
 }
 
 const questionsData: Question[] = [
-  // {
-  //   key: 'education',
-  //   en: 'What is your education?',
-  //   hi: 'आपकी शिक्षा क्या है?',
-  //   mr: 'तुमचं शिक्षण काय आहे?',
-  // },
-  // { key: 'age', en: 'What is your age?', hi: 'आपकी उम्र क्या है?', mr: 'तुमचं वय काय आहे?' },
+  {
+    key: 'education',
+    en: 'What is your education?',
+    hi: 'आपकी शिक्षा क्या है?',
+    mr: 'तुमचं शिक्षण काय आहे?',
+  },
+  { key: 'age', en: 'What is your age?', hi: 'आपकी उम्र क्या है?', mr: 'तुमचं वय काय आहे?' },
   {
     key: 'salary',
     en: 'What is your monthly income?',
@@ -35,12 +35,12 @@ const questionsData: Question[] = [
     hi: 'आप हर महीने कितनी बचत करते हैं?',
     mr: 'तुम दर महिन्याला किती बचत करता?',
   },
-  // {
-  //   key: 'schemes',
-  //   en: 'Are you using any government scheme?',
-  //   hi: 'क्या आप किसी सरकारी योजना का उपयोग कर रहे हैं?',
-  //   mr: 'तुम्ही कोणत्याही सरकारी योजनेंत भाग घेतलाय का?',
-  // },
+  {
+    key: 'schemes',
+    en: 'Are you using any government scheme?',
+    hi: 'क्या आप किसी सरकारी योजना का उपयोग कर रहे हैं?',
+    mr: 'तुम्ही कोणत्याही सरकारी योजनेंत भाग घेतलाय का?',
+  },
 ];
 
 const ClientAdvisorVoiceWizard: React.FC<ClientAdvisorVoiceWizardProps> = ({ setAiResponse }) => {
@@ -82,6 +82,21 @@ const ClientAdvisorVoiceWizard: React.FC<ClientAdvisorVoiceWizardProps> = ({ set
     window.speechSynthesis.speak(utterance);
   };
 
+  const handleClose = () => {
+  setShow(false);
+
+  // Stop any ongoing voice/speech recognition or speaking
+  SpeechRecognition.stopListening();
+  window.speechSynthesis.cancel();
+
+  // Clear timeout
+  if (timeoutRef.current) {
+    clearTimeout(timeoutRef.current);
+    timeoutRef.current = null;
+  }
+};
+
+
   const startInterview = () => {
     setShow(true);
     setCurrent(0);
@@ -113,7 +128,7 @@ const ClientAdvisorVoiceWizard: React.FC<ClientAdvisorVoiceWizardProps> = ({ set
 
     timeoutRef.current = setTimeout(() => {
       handleNoResponse();
-    }, 10000);
+    }, 5000);
   };
 
   const handleNoResponse = () => {
@@ -166,7 +181,7 @@ const ClientAdvisorVoiceWizard: React.FC<ClientAdvisorVoiceWizardProps> = ({ set
         : 'Thank you! We will suggest solutions based on your answers.';
 
     speak(thankYouMsg);
-    setTimeout(() => setShow(false), 1000);
+    setTimeout(() => setShow(false), 4000);
 
     try {
       setAiResponse('loading');
@@ -211,7 +226,7 @@ const ClientAdvisorVoiceWizard: React.FC<ClientAdvisorVoiceWizardProps> = ({ set
       >
         {t('get_to_know')}
       </Button>
-      <Offcanvas show={show} onHide={() => setShow(false)} placement="end">
+      <Offcanvas show={show} onHide={handleClose} placement="end">
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>{t('get_to_know')}</Offcanvas.Title>
         </Offcanvas.Header>
