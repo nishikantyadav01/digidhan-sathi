@@ -151,6 +151,7 @@
   background: linear-gradient(to right, #e0f2f1, #f9fbe7, #fce4ec);
   color: #333;
   padding: 3rem 1rem;
+  margin-top:  55px !important;
 }
 
 .video-section iframe {
@@ -164,6 +165,11 @@
 .video-title {
   margin-bottom: 2rem;
   color: #333;
+}
+
+.embedded-iframe {
+  border: 2px solid #ccc;
+  border-radius: 8px;
 }
 
 /* Fade in animation */

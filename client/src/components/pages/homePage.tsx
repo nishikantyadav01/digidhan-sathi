@@ -50,16 +50,8 @@ const HomePage: React.FC = () => {
             </Grid.Column>
             <Grid.Column>
               <WidgetTile
-                title="Children's Higher Education"
-                image="src/assets/images/premium_photo.jpg"
-                description="Plan and save for your child’s academic future."
-                link="/education"
-              />
-            </Grid.Column>
-            <Grid.Column>
-              <WidgetTile
                 title="E-Learning Support"
-                image="src/assets/images/kelly-sikkema.jpg"
+                image="src/assets/images/elearning.jpeg"
                 description="Learn essential financial skills anytime, anywhere."
                 link="/elearning"
               />
@@ -72,21 +64,41 @@ const HomePage: React.FC = () => {
                 link="/quiz"
               />
             </Grid.Column>
+            <Grid.Column className="widgets-col">
+              <WidgetTile
+                title="CSR-initiatives"
+                image="src/assets/images/csrInitiatives.png"
+                description="Connect NGOs, entrepreneurs, and corporates for social impact."
+                link="/csr-dashboard"
+              />
+            </Grid.Column>
           </Grid.Row>
         </Grid>
       </Container>
-
       <Segment vertical className="video-section" textAlign="center">
         <Header as="h3" className="video-title">
-          Financial Inclusion in the Digital Age
+          DigiDhan Saathi Introduction
         </Header>
         <iframe
-          src="https://www.youtube.com/embed/AJLFcbzTBbg"
+          className="embedded-iframe"
+          src="src/assets/videos/DigiDhan_Saathi_introduction_video_V2.mp4"
           title="Financial Inclusion"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         />
       </Segment>
+      <Grid stackable columns={4} doubling centered>
+        <Grid.Row centered>
+          <Grid.Column width={4}>
+            <WidgetTile
+              title="Children's Higher Education"
+              image="src/assets/images/premium_photo.jpg"
+              description="Plan and save for your child’s academic future."
+              link="/education"
+            />
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     </div>
   );
 };

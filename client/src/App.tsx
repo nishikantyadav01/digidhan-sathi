@@ -16,6 +16,8 @@ import ScrollToTop from './components/core/scrollToTop';
 import VoiceAssistant from './components/chatbot/VoiceAssistant';
 import SignUp from './components/SignUp/SignUp';
 import QuizPage from './components/fin-quiz/quiz-page';
+import CSRPage from './components/pages/CSRInitiatives';
+import CSRDashboard from './components/pages/CSRDashboard';
 
 const App: React.FC = () => {
   return (
@@ -38,6 +40,8 @@ const App: React.FC = () => {
           <Route path="/voiceWizard" element={<ProtectedRoute><VoiceAssistant /></ProtectedRoute>} />
           <Route path="/quiz" element={<ProtectedRoute><QuizPage /></ProtectedRoute>} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/csr-dashboard" element={<CSRDashboard />} />
+          <Route path="/csr-events" element={<CSRPage />} />
         </Routes>
       </Router>
     </AuthProvider>

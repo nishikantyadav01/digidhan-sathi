@@ -1,23 +1,23 @@
 import React from 'react';
-import { Container, Header, Segment, Grid, Embed, Icon, Button } from 'semantic-ui-react';
+import { Container, Header, Segment, Grid, Icon, Button } from 'semantic-ui-react';
 import './eLearning.css';
 import { useNavigate } from 'react-router-dom';
 
 const videos = [
   {
-    title: 'Financial Literacy Basics',
-    youtubeId: 'https://www.youtube.com/embed/AJLFcbzTBbg',
+    title: 'Business Loan Help',
+    youtubeId: 'src/assets/videos/EducationLoanonAgricultural.mp4',
   },
   {
-    title: 'How to Budget Your Money',
-    youtubeId: 'https://www.youtube.com/embed/AJLFcbzTBbg',
+    title: 'How to avoid Scams',
+    youtubeId: 'src/assets/videos/GovernmentSchemesForLoans.mp4',
   },
   {
-    title: 'Investing 101 for Beginners',
-    youtubeId: 'https://www.youtube.com/embed/AJLFcbzTBbg',
+    title: 'Loans for Woman Entrepreneur',
+    youtubeId: 'src/assets/videos/LoanschemesforFemales.mp4',
   },
   {
-    title: 'Debt Management Tips',
+    title: 'Build trust with Digital payments',
     youtubeId: 'https://www.youtube.com/embed/AJLFcbzTBbg',
   },
   {
@@ -49,22 +49,28 @@ const ElearningPage: React.FC = () => {
             <Header.Content>E-Learning Support</Header.Content>
           </Header>
           <div className="btn-block">
-              <Button circular icon color="blue" size='mini' onClick={handleNotificationClick}>
-                <Icon name="bell" />
-              </Button>
-              <Button
-                color="blue"
-                className="logout-btn"
-                icon
-                size='medium'
-                labelPosition="left"
-                onClick={() => navigate('/login')}
-              >
-                <Icon name="sign-out" />
-                Logout
-              </Button>
-            </div>
+            <Button circular icon color="blue" size='mini' onClick={handleNotificationClick}>
+              <Icon name="bell" />
+            </Button>
+            <Button
+              color="blue"
+              className="logout-btn"
+              icon
+              size='medium'
+              labelPosition="left"
+              onClick={() => navigate('/login')}
+            >
+              <Icon name="sign-out" />
+              Logout
+            </Button>
+          </div>
         </div>
+        <p
+          onClick={() => navigate('/csr-dashboard')}
+          className="ui text"
+          style={{ cursor: 'pointer', fontWeight: '600', color: '#27279b' }} >
+          Click here for our CSR initiatives!
+        </p>
         <Grid vertical stackable columns={3} doubling className="elearning-grid">
           {videos.map((video, index) => (
             <Grid.Column key={index}>
