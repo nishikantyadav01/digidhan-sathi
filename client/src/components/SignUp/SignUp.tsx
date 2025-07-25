@@ -1,7 +1,7 @@
 import React, { useRef, useState, FormEvent } from 'react';
 import { useAuth } from '../../components/contexts/AuthContext';
 import './SignUp.css'; // regular CSS import, not module
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import CustomInput  from '../Input/CustomInput';
 import CustomButton from '../Button/CustomButton';
 
@@ -11,7 +11,7 @@ const SignUp: React.FC = () => {
   const passwordConfirmRef = useRef<HTMLInputElement>(null);
   const nameRef = useRef<HTMLInputElement>(null);
 
-  const { signup, currentUser } = useAuth();
+  const { signup } = useAuth();
   const [error, setError] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
@@ -43,7 +43,7 @@ const SignUp: React.FC = () => {
         emailRef.current.value,
         passwordRef.current.value
       );
-      navigate('/');
+      navigate('/Login');
     } catch {
       setError('Failed to create an account');
     } finally {
@@ -67,9 +67,9 @@ const SignUp: React.FC = () => {
     if (nameRef.current) nameRef.current.value = value;
   };
 
-  if (currentUser) {
-    return <Navigate to="/" replace />;
-  }
+  // if (currentUser) {
+  //   return <Navigate to="/" replace />;
+  // }
 
   return (
     <div className="main">

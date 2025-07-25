@@ -3,11 +3,14 @@
   width: 100% !important;
   padding: 0!important;
   margin: 0 !important;
+
   .ui.segment.main-segment {
     padding: 0 !important;
     border: none !important;
+
     div.header-gradient {
-      background: linear-gradient(90deg, #64b5f6, #81c784); /* blue to green */
+      background: linear-gradient(90deg, #64b5f6, #81c784);
+      /* blue to green */
       margin-bottom: 1em;
       color: white !important;
       /* border-radius: 16px; */
@@ -15,6 +18,7 @@
       justify-content: space-between;
       align-items: center;
     }
+
     h2.ui.header.header-box {
       display: flex;
       justify-content: flex-start;
@@ -22,7 +26,8 @@
       width: 82%;
       padding: 5px !important;
       align-items: center;
-      background: linear-gradient(90deg, #64b5f6, #81c784); 
+      background: linear-gradient(90deg, #64b5f6, #81c784);
+      /* blue to green */
       border-radius: 16px;
 
       i.laptop {
@@ -35,6 +40,7 @@
         padding-left: 2rem;
       }
     }
+
     h4.ui.header {
       display: flex;
       justify-content: center;
@@ -42,10 +48,12 @@
       padding: 5px 0;
       color: #000 !important;
     }
+
     .ui.grid {
       margin: 0;
     }
   }
+
   .ui.raised.segment {
     padding: 0 1em;
   }
@@ -78,5 +86,24 @@
     /* background: #f9fbe7; */
     margin: 0 10px!important;
     box-sizing: content-box;
+  }
+
+  .video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    /* 16:9 aspect ratio — adjust if needed */
+    overflow: hidden;
+  }
+
+  .video-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* or "cover" for zoomed in effect */
+    background-color: #000;
   }
 }

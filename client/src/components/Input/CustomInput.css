@@ -51,6 +51,11 @@
   color: rgba(0, 0, 0, 0.5);
   transform: translate3d(0, -8px, 0) scale(0.6);
 }
+.inp input {
+  background: rgba(0, 0, 0, 0.05);
+  outline: none;
+  border: 1px solid #3e1ecf;
+}
 .inp input:focus {
   background: rgba(0, 0, 0, 0.05);
   outline: none;

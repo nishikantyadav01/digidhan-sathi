@@ -84,12 +84,21 @@ const HomePage: React.FC = () => {
         <Header as="h3" className="video-title">
           DigiDhan Saathi Introduction
         </Header>
-        <iframe
+        {/* <iframe
           className="embedded-iframe"
           src="src/assets/videos/DigiDhan_Saathi_introduction_video_V2.mp4"
           title="Financial Inclusion"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
+        /> */}
+        <video
+          className="embedded-iframe"
+          src="src/assets/videos/DigiDhan_Saathi_introduction_video_V2.mp4"
+          controls
+          preload="metadata"
+          width="800"
+          height="500"
+          title="Financial Inclusion"
         />
       </Segment>
       <Row className="justify-content-center mb-5 wealth-section">
@@ -101,7 +110,7 @@ const HomePage: React.FC = () => {
             </p>
             <div className="mt-4">
               <BootstrapButton onClick={handleEducationClick} className="financial-btn" size="lg">
-                Get Started
+                Learn Wealth Planning
               </BootstrapButton>
             </div>
           </div>

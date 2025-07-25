@@ -3,7 +3,9 @@
   box-sizing: border-box;
 }
 
-body, html, #root {
+body,
+html,
+#root {
   height: 100%;
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -13,12 +15,15 @@ body, html, #root {
 
 
 .login-wrapper {
-  height: 100vh; /* full viewport height */
+  height: 100vh;
+  /* full viewport height */
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url('./../../assets/images/Saathi Backround Image.jpg'); /* relative path or absolute URL */
-  background-size: cover; /* cover whole area */
+  background-image: url('./../../assets/images/DigiDhan Saathi Backround Image.png');
+  /* relative path or absolute URL */
+  background-size: cover;
+  /* cover whole area */
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -31,6 +36,13 @@ body, html, #root {
   width: 100%;
   max-width: 400px;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.btn-login-test {
+  margin-top: 20px;
 }
 
 .login-title {

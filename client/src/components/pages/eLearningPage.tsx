@@ -72,18 +72,18 @@ const ElearningPage: React.FC = () => {
         </div>
         <Row className="d-flex justify-content-between">
           <p
-          className="ui text "
-          style={{ width: '40%', fontSize: '1.5rem', fontWeight: '600', paddingLeft: '35px' }}
-        >
-          Handpicked Videos for Your Journey
-        </p>
-        <p
-          onClick={() => navigate('/csr-dashboard')}
-          className="ui text "
-          style={{ width: '40%', cursor: 'pointer', fontSize: '1.5rem', fontWeight: '600', color: '#4406a2', textAlign: 'right' }}
-        >
-          Click here for our CSR initiatives!
-        </p>
+            className="ui text "
+            style={{ width: '40%', fontSize: '1.5rem', fontWeight: '600', paddingLeft: '35px' }}
+          >
+            Handpicked Videos for Your Journey
+          </p>
+          <p
+            onClick={() => navigate('/csr-dashboard')}
+            className="ui text "
+            style={{ width: '40%', cursor: 'pointer', fontSize: '1.5rem', fontWeight: '600', color: '#4406a2', textAlign: 'right' }}
+          >
+            Click here for our CSR initiatives!
+          </p>
         </Row>
         <Grid vertical stackable columns={3} doubling className="elearning-grid">
           {videos.personalized.map((video, index) => (
@@ -92,25 +92,23 @@ const ElearningPage: React.FC = () => {
                 <Header as="h4" textAlign="center">
                   {video.title}
                 </Header>
-                {/* <Embed id={video.youtubeId} source="youtube" iframe={{ allowFullScreen: true }} /> */}
-                <iframe
-                  src={video.youtubeId}
-                  width={358}
-                  title="Financial Inclusion in the Digital Age"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
+                <div className="video-wrapper">
+                  <video controls className="video-player">
+                    <source src={video.youtubeId} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
               </Segment>
             </Grid.Column>
           ))}
         </Grid>
         <Row className="d-flex justify-content-between mt-4">
           <p
-          className="ui text "
-          style={{ width: '40%', fontSize: '1.5rem', fontWeight: '600', paddingLeft: '35px', paddingBottom: '10px' }}
-        >
-          Learning Hub
-        </p>
+            className="ui text "
+            style={{ width: '40%', fontSize: '1.5rem', fontWeight: '600', paddingLeft: '35px', paddingBottom: '10px' }}
+          >
+            Learning Hub
+          </p>
         </Row>
         <Grid vertical stackable columns={3} doubling className="elearning-grid">
           {videos.common.map((video, index) => (
@@ -119,14 +117,12 @@ const ElearningPage: React.FC = () => {
                 <Header as="h4" textAlign="center">
                   {video.title}
                 </Header>
-                {/* <Embed id={video.youtubeId} source="youtube" iframe={{ allowFullScreen: true }} /> */}
-                <iframe
-                  src={video.youtubeId}
-                  width={358}
-                  title="Financial Inclusion in the Digital Age"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
+                <div className="video-wrapper">
+                  <video controls className="video-player">
+                    <source src={video.youtubeId} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
               </Segment>
             </Grid.Column>
           ))}

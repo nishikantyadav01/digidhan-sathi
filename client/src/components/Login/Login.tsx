@@ -47,9 +47,9 @@ const Login: React.FC = () => {
     }
   }
 
-  if (currentUser) {
-    return <Navigate to="/" replace />;
-  }
+  // if (currentUser) {
+  //   return <Navigate to="/" replace />;
+  // }
 
   return (
     <div className="login-wrapper">

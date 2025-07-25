@@ -19,7 +19,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   return (
     <button
       data-testid={test ? test : undefined}
-      className="btn"  // Use plain class name here
+      className="btn btn-login-test"  // Use plain class name here
       onClick={onClick}
       type={type}
       disabled={disabled}
