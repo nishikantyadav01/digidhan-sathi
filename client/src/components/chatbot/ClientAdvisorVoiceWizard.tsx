@@ -15,6 +15,13 @@ interface ClientAdvisorVoiceWizardProps {
   setAiResponse: (response: string) => void;
 }
 
+const introText = {
+  key: 'intro',
+  en: 'Hello! I\'m your AI financial advisor, let me ask you few questions.',
+  hi: 'नमस्ते! मैं आपका एआई वित्तीय सलाहकार हूँ, मैं आपसे कुछ सवाल पूछना चाहूंगा',
+  mr: 'नमस्कार! मी तुमचा एआय आर्थिक सल्लागार आहे, मी तुम्हाला काही प्रश्न विचारू इच्छितो',
+}
+
 const questionsData: Question[] = [
   { key: 'age', en: 'What is your age?', hi: 'आपकी उम्र क्या है?', mr: 'तुमचं वय काय आहे?' },
   {
@@ -47,8 +54,10 @@ const ClientAdvisorVoiceWizard: React.FC<ClientAdvisorVoiceWizardProps> = ({ set
   const [show, setShow] = useState<boolean>(false);
   const [current, setCurrent] = useState<number>(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
-  const [lang, setLang] = useState<'en' | 'hi' | 'mr'>('en');
+  const [lang, setLang] = useState<'en' | 'hi' | 'mr'>('hi');
   const [retryCount, setRetryCount] = useState<number>(0);
+  const isActiveRef = useRef(false);
+
 
   const { transcript, listening, resetTranscript, browserSupportsSpeechRecognition } =
     useSpeechRecognition();
@@ -69,6 +78,8 @@ const ClientAdvisorVoiceWizard: React.FC<ClientAdvisorVoiceWizardProps> = ({ set
   }, [listening]);
 
   const speak = (text: string, callback?: () => void) => {
+     if (!isActiveRef.current) return;
+     
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = lang === 'hi' ? 'hi-IN' : lang === 'mr' ? 'mr-IN' : 'en-US';
     utterance.pitch = 1;
@@ -83,29 +94,35 @@ const ClientAdvisorVoiceWizard: React.FC<ClientAdvisorVoiceWizardProps> = ({ set
   };
 
   const handleClose = () => {
-  setShow(false);
+    isActiveRef.current = false;
+    setShow(false);
+    SpeechRecognition.stopListening();
+    window.speechSynthesis.cancel();
 
-  // Stop any ongoing voice/speech recognition or speaking
-  SpeechRecognition.stopListening();
-  window.speechSynthesis.cancel();
-
-  // Clear timeout
-  if (timeoutRef.current) {
-    clearTimeout(timeoutRef.current);
-    timeoutRef.current = null;
-  }
-};
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+  };
 
 
   const startInterview = () => {
+    isActiveRef.current = true;
     setShow(true);
     setCurrent(0);
     setAnswers({});
     setRetryCount(0);
     setTimeout(() => {
-      askQuestion(0);
+      introSpeech();
     }, 500);
+    setTimeout(() => {
+      askQuestion(0);
+    }, 7000);
   };
+
+  const introSpeech = () => {
+    speak(introText[lang]);
+  }
 
   const askQuestion = (index: number) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -140,8 +157,8 @@ const ClientAdvisorVoiceWizard: React.FC<ClientAdvisorVoiceWizardProps> = ({ set
         lang === 'hi'
           ? 'मैंने आपकी बात नहीं सुनी, कृपया दोहराएं।'
           : lang === 'mr'
-          ? 'मी तुमचं उत्तर ऐकू शकलो नाही, पुन्हा सांगा.'
-          : 'I could not hear you, please repeat.';
+            ? 'मी तुमचं उत्तर ऐकू शकलो नाही, पुन्हा सांगा.'
+            : 'I could not hear you, please repeat.';
 
       speak(message, () => {
         startListeningWithTimeout();
@@ -177,8 +194,8 @@ const ClientAdvisorVoiceWizard: React.FC<ClientAdvisorVoiceWizardProps> = ({ set
       lang === 'hi'
         ? 'धन्यवाद! हम आपके उत्तरों के अनुसार सुझाव देंगे।'
         : lang === 'mr'
-        ? 'धन्यवाद! आम्ही तुमच्या उत्तरांनुसार उपाय सुचवू.'
-        : 'Thank you! We will suggest solutions based on your answers.';
+          ? 'धन्यवाद! आम्ही तुमच्या उत्तरांनुसार उपाय सुचवू.'
+          : 'Thank you! We will suggest solutions based on your answers.';
 
     speak(thankYouMsg);
     setTimeout(() => setShow(false), 4000);
@@ -205,9 +222,36 @@ const ClientAdvisorVoiceWizard: React.FC<ClientAdvisorVoiceWizardProps> = ({ set
     }
   };
 
+  const handleLangChange = (event) => {
+    const newLang = event.target.value as 'en' | 'hi' | 'mr';
+    setLang(newLang);
+
+    if (show) {
+      SpeechRecognition.stopListening();
+      window.speechSynthesis.cancel();
+
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = null;
+      }
+
+      // Delay interview start to wait for state to update
+      setTimeout(() => {
+        setCurrent(0);
+        setAnswers({});
+        setRetryCount(0);
+
+        // Use newLang directly instead of lang
+        speak(introText[newLang], () => {
+          askQuestion(0);
+        });
+      }, 300); // enough delay for state to update
+    }
+  }
+
   return (
     <>
-      <Button
+      {!show && <Button
         variant="warning"
         style={{
           position: 'fixed',
@@ -225,7 +269,7 @@ const ClientAdvisorVoiceWizard: React.FC<ClientAdvisorVoiceWizardProps> = ({ set
         onClick={startInterview}
       >
         {t('get_to_know')}
-      </Button>
+      </Button>}
       <Offcanvas show={show} onHide={handleClose} placement="end">
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>{t('get_to_know')}</Offcanvas.Title>
@@ -242,15 +286,16 @@ const ClientAdvisorVoiceWizard: React.FC<ClientAdvisorVoiceWizardProps> = ({ set
               <strong>{t('your_answer')}:</strong> {transcript}
             </p>
 
-            <p className="mt-3">
+            {/* <p className="mt-3">
               <strong>{t('collected')}:</strong>
             </p>
-            <pre>{JSON.stringify(answers, null, 2)}</pre>
+            <pre>{JSON.stringify(answers, null, 2)}</pre> */}
 
             <label className="mt-3">Language:</label>
             <select
               value={lang}
-              onChange={(e) => setLang(e.target.value as 'en' | 'hi' | 'mr')}
+              // onChange={(e) => setLang(e.target.value as 'en' | 'hi' | 'mr')}
+              onChange={(e) => handleLangChange(e)}
               className="form-select"
             >
               <option value="hi">हिंदी</option>
