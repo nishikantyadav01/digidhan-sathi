@@ -42,7 +42,7 @@
 .csr-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 /* Modal */
@@ -102,12 +102,13 @@
 }
 
 .csr-card {
-  background-color: white;
-  padding: 1rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+  background: linear-gradient(135deg, #e0f7fa, #f1f8e9);
+  /* light blue + green */
+  border-radius: 16px !important;
+  padding: 2em;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .csr-card:hover {
