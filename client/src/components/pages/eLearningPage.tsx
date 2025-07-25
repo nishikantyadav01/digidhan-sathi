@@ -38,10 +38,6 @@ const videos = {
 const ElearningPage: React.FC = () => {
   const navigate = useNavigate();
 
-  const handleNotificationClick = () => {
-    console.log('Notifications clicked!');
-  };
-
   return (
     <Container
       className="elearning-page"
@@ -54,9 +50,18 @@ const ElearningPage: React.FC = () => {
             <Header.Content>E-Learning Support</Header.Content>
           </Header>
           <div className="btn-block">
-            <Button circular icon color="blue" size="mini" onClick={handleNotificationClick}>
-              <Icon name="bell" />
+            <Button
+              circular
+              color="blue"
+              size="large"
+              icon
+              onClick={() => (window.location.href = '/')}
+            >
+              <Icon name="home" />
             </Button>
+            {/* <Button circular icon color="blue" size="large" onClick={handleNotificationClick}>
+              <Icon name="bell" />
+            </Button> */}
             <Button
               color="blue"
               className="logout-btn"
@@ -80,7 +85,14 @@ const ElearningPage: React.FC = () => {
           <p
             onClick={() => navigate('/csr-dashboard')}
             className="ui text "
-            style={{ width: '40%', cursor: 'pointer', fontSize: '1.5rem', fontWeight: '600', color: '#4406a2', textAlign: 'right' }}
+            style={{
+              width: '40%',
+              cursor: 'pointer',
+              fontSize: '1.5rem',
+              fontWeight: '600',
+              color: '#4406a2',
+              textAlign: 'right',
+            }}
           >
             Click here for our CSR initiatives!
           </p>
@@ -105,7 +117,13 @@ const ElearningPage: React.FC = () => {
         <Row className="d-flex justify-content-between mt-4">
           <p
             className="ui text "
-            style={{ width: '40%', fontSize: '1.5rem', fontWeight: '600', paddingLeft: '35px', paddingBottom: '10px' }}
+            style={{
+              width: '40%',
+              fontSize: '1.5rem',
+              fontWeight: '600',
+              paddingLeft: '35px',
+              paddingBottom: '10px',
+            }}
           >
             Learning Hub
           </p>

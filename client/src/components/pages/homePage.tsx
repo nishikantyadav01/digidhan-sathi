@@ -9,7 +9,7 @@ const HomePage: React.FC = () => {
   const navigate = useNavigate();
 
   const handleNotificationClick = () => {
-    console.log('Notifications clicked!');
+    navigate('/csr-dashboard');
   };
 
   const handleEducationClick = () => {

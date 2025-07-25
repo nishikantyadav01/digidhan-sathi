@@ -23,7 +23,7 @@
       display: flex;
       justify-content: flex-start;
       margin: 0;
-      width: 82%;
+      width: 80%;
       padding: 5px !important;
       align-items: center;
       background: linear-gradient(90deg, #64b5f6, #81c784);
@@ -60,7 +60,7 @@
 
   .btn-block {
     .ui.circular.button {
-      margin-right: 1.5rem !important;
+      margin-right: 1rem !important;
       width: 40px;
     }
 

@@ -59,9 +59,18 @@ const EducationPage: React.FC = () => {
             <Header.Content>Children’s Higher Education Planning</Header.Content>
           </Header>
           <div className="btn-block">
-            <Button circular icon color="blue" size="mini" onClick={handleNotificationClick}>
-              <Icon name="bell" />
+            <Button
+              circular
+              color="blue"
+              size="large"
+              icon
+              onClick={() => (window.location.href = '/')}
+            >
+              <Icon name="home" />
             </Button>
+            {/* <Button circular icon color="blue" size="large" onClick={handleNotificationClick}>
+              <Icon name="bell" />
+            </Button> */}
             <Button
               color="blue"
               className="logout-btn"

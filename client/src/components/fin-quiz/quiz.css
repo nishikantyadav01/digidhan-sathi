@@ -31,6 +31,11 @@ div.main-content {
   padding: 1rem;
 }
 
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+}
+
 .popup-backdrop {
   position: fixed;
   top: 0;

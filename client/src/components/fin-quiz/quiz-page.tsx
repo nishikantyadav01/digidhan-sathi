@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { quizQuestions, QuizQuestion } from './quiz-data';
 import { Container, Header, Form, Radio, Button, Segment, Message, Icon } from 'semantic-ui-react';
 import './quiz.css';
+import { useNavigate } from 'react-router-dom';
 
 const QuizPage: React.FC = () => {
   const [answers, setAnswers] = useState<number[]>(Array(quizQuestions.length).fill(-1));
@@ -33,11 +34,36 @@ const QuizPage: React.FC = () => {
   };
 
   const handleClose = () => setShowMessage(false);
+  const navigate = useNavigate();
 
   return (
     <Container text style={{ marginTop: '1rem', padding: '1rem' }}>
-      <Header as="h2" dividing>
+      <Header as="h2" dividing className='quiz-header'>
         📚 Financial Literacy Quiz (India)
+        <div className="btn-block">
+          <Button
+            circular
+            color="blue"
+            size="large"
+            icon
+            onClick={() => (window.location.href = '/')}
+          >
+            <Icon name="home" />
+          </Button>
+          {/* <Button circular icon color="blue" size="large">
+            <Icon name="bell" />
+          </Button> */}
+          <Button
+            color="blue"
+            className="logout-btn"
+            icon
+            labelPosition="left"
+            onClick={() => navigate('/login')}
+          >
+            <Icon name="sign-out" />
+            Logout
+          </Button>
+        </div>
       </Header>
       <div className="main-content">
         <div className="left-content">
@@ -80,9 +106,7 @@ const QuizPage: React.FC = () => {
               success
               onDismiss={handleClose}
               header={
-                <div
-                  style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-                >
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                   <span>Quiz Submitted!</span>
                 </div>
               }

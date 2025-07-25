@@ -20,7 +20,7 @@
 
       .btn-block {
         .ui.circular.button {
-          margin-right: 1.5rem !important;
+          margin-right: 1rem !important;
           width: 40px;
         }
 
@@ -37,7 +37,7 @@
       background: linear-gradient(90deg, #64b5f6, #81c784);
       border-radius: 16px;
       align-items: center;
-      width: 82%;
+      width: 80%;
 
       i.graduation {
         margin: 0;

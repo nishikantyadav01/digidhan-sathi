@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Card, Spinner } from 'react-bootstrap';
+import { Card, Col, Row, Spinner } from 'react-bootstrap';
 import { FaBullhorn, FaBrain } from 'react-icons/fa';
 import FeedbackWidget from './ClientAdvisorVoiceWizard';
 import { useNavigate } from 'react-router-dom';
+import { Button, Icon } from 'semantic-ui-react';
 
 const VoiceAssistant: React.FC = () => {
   const [suggestions, setAiSuggestions] = useState<string>('');
@@ -11,7 +12,35 @@ const VoiceAssistant: React.FC = () => {
 
   return (
     <div className="container mt-5">
-      <h2 className='header-txt'>
+      <Row className="justify-content-end">
+        <Col xs={3} className='justify-content-end'>
+          <div className="btn-block d-flex justify-content-end">
+            <Button
+              circular
+              color="blue"
+              size="large"
+              icon
+              onClick={() => (window.location.href = '/')}
+            >
+              <Icon name="home" />
+            </Button>
+            {/* <Button circular icon color="blue" size="large">
+                    <Icon name="bell" />
+                  </Button> */}
+            <Button
+              color="blue"
+              className="logout-btn"
+              icon
+              labelPosition="left"
+              onClick={() => navigate('/login')}
+            >
+              <Icon name="sign-out" />
+              Logout
+            </Button>
+          </div>
+        </Col>
+      </Row>
+      <h2 className="header-txt">
         <FaBullhorn /> AI Voice Enabled Financial Advisor
       </h2>
 
@@ -31,14 +60,17 @@ const VoiceAssistant: React.FC = () => {
               <p
                 onClick={() => navigate('/elearning')}
                 className="ui text"
-                style={{ cursor: 'pointer', fontWeight: '600', color: '#27279b' }} >
+                style={{ cursor: 'pointer', fontWeight: '600', color: '#27279b' }}
+              >
                 Click here for your personlized learning suggestions!
               </p>
             </Card.Body>
           </Card>
         </>
       ) : (
-        <p className="text-muted mt-4 blink" style={{fontWeight: '600', fontSize: '1.2em'}}>Use the "Get to Know You" wizard to get suggestions.</p>
+        <p className="text-muted mt-4 blink" style={{ fontWeight: '600', fontSize: '1.2em' }}>
+          Use the "Get to Know You" wizard to get suggestions.
+        </p>
       )}
 
       <FeedbackWidget setAiResponse={setAiSuggestions} />
