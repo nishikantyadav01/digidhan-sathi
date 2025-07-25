@@ -1,16 +1,16 @@
 .ui.container.elearning-page {
   display: block;
   width: 100% !important;
-  padding: 0 10px !important;
+  padding: 0!important;
   margin: 0 !important;
   .ui.segment.main-segment {
-    /* padding: 0 !important; */
+    padding: 0 !important;
     border: none !important;
     div.header-gradient {
       background: linear-gradient(90deg, #64b5f6, #81c784); /* blue to green */
       margin-bottom: 1em;
       color: white !important;
-      border-radius: 16px;
+      /* border-radius: 16px; */
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -22,7 +22,7 @@
       width: 82%;
       padding: 5px !important;
       align-items: center;
-      background: linear-gradient(90deg, #64b5f6, #81c784); /* blue to green */
+      background: linear-gradient(90deg, #64b5f6, #81c784); 
       border-radius: 16px;
 
       i.laptop {
@@ -75,6 +75,8 @@
   }
 
   .elearning-grid {
-    background: #f9fbe7;
+    /* background: #f9fbe7; */
+    margin: 0 10px!important;
+    box-sizing: content-box;
   }
 }

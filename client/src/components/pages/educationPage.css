@@ -1,10 +1,11 @@
 .ui.container.education-page {
   display: block;
   width: 100% !important;
-  padding: 0 10px !important;
+  padding: 0!important;
   margin: 0 !important;
   .ui.segment.main-segment {
     border: none !important;
+    padding: 0;
     .ui.aligned.segment {
       padding: 0 !important;
     }
@@ -12,7 +13,7 @@
       background: linear-gradient(90deg, #64b5f6, #81c784); /* blue to green */
       margin-bottom: 1em;
       color: white !important;
-      border-radius: 16px;
+      /* border-radius: 16px; */
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -24,7 +25,6 @@
         }
 
         .sign-out {
-          font-size: 2em;
           margin-right: 15px;
         }
       }
@@ -65,7 +65,7 @@
     }
     .cards-grp {
       padding: 2em;
-      background: #f9fbe7; /* pale lime background */
+      /* background: #f9fbe7;  */
       border-radius: 16px;
 
       .ui.cards:after:after {

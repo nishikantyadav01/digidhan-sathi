@@ -62,16 +62,16 @@ const EducationPage: React.FC = () => {
             <Button circular icon color="blue" size="mini" onClick={handleNotificationClick}>
               <Icon name="bell" />
             </Button>
-            {/* <Button
+            <Button
               color="blue"
               className="logout-btn"
               icon
-              size="medium"
               labelPosition="left"
               onClick={() => navigate('/login')}
-            > */}
-              <Icon name="sign-out" onClick={() => navigate('/login')} />
-            {/* </Button> */}
+            >
+              <Icon name="sign-out" />
+              Logout
+            </Button>
           </div>
         </div>
 

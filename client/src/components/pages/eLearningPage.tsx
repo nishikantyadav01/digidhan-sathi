@@ -2,33 +2,38 @@ import React from 'react';
 import { Container, Header, Segment, Grid, Icon, Button } from 'semantic-ui-react';
 import './eLearning.css';
 import { useNavigate } from 'react-router-dom';
+import { Row } from 'react-bootstrap';
 
-const videos = [
-  {
-    title: 'Business Loan Help',
-    youtubeId: 'src/assets/videos/EducationLoanonAgricultural.mp4',
-  },
-  {
-    title: 'How to avoid Scams',
-    youtubeId: 'src/assets/videos/GovernmentSchemesForLoans.mp4',
-  },
-  {
-    title: 'Loans for Woman Entrepreneur',
-    youtubeId: 'src/assets/videos/LoanschemesforFemales.mp4',
-  },
-  {
-    title: 'Build trust with Digital payments',
-    youtubeId: 'https://www.youtube.com/embed/AJLFcbzTBbg',
-  },
-  {
-    title: 'Credit Score Explained',
-    youtubeId: 'https://www.youtube.com/embed/AJLFcbzTBbg',
-  },
-  {
-    title: 'Saving for Retirement Early',
-    youtubeId: 'https://www.youtube.com/embed/AJLFcbzTBbg',
-  },
-];
+const videos = {
+  personalized: [
+    {
+      title: 'Business Loan Help',
+      youtubeId: 'src/assets/videos/EducationLoanonAgricultural.mp4',
+    },
+    {
+      title: 'How to avoid Scams',
+      youtubeId: 'src/assets/videos/GovernmentSchemesForLoans.mp4',
+    },
+    {
+      title: 'Loans for Woman Entrepreneur',
+      youtubeId: 'src/assets/videos/LoanschemesforFemales.mp4',
+    },
+  ],
+  common: [
+    {
+      title: 'Build trust with Digital payments',
+      youtubeId: 'https://www.youtube.com/embed/AJLFcbzTBbg',
+    },
+    {
+      title: 'Credit Score Explained',
+      youtubeId: 'https://www.youtube.com/embed/AJLFcbzTBbg',
+    },
+    {
+      title: 'Saving for Retirement Early',
+      youtubeId: 'https://www.youtube.com/embed/AJLFcbzTBbg',
+    },
+  ],
+};
 
 const ElearningPage: React.FC = () => {
   const navigate = useNavigate();
@@ -49,14 +54,14 @@ const ElearningPage: React.FC = () => {
             <Header.Content>E-Learning Support</Header.Content>
           </Header>
           <div className="btn-block">
-            <Button circular icon color="blue" size='mini' onClick={handleNotificationClick}>
+            <Button circular icon color="blue" size="mini" onClick={handleNotificationClick}>
               <Icon name="bell" />
             </Button>
             <Button
               color="blue"
               className="logout-btn"
               icon
-              size='medium'
+              size="medium"
               labelPosition="left"
               onClick={() => navigate('/login')}
             >
@@ -65,14 +70,50 @@ const ElearningPage: React.FC = () => {
             </Button>
           </div>
         </div>
+        <Row className="d-flex justify-content-between">
+          <p
+          className="ui text "
+          style={{ width: '40%', fontSize: '1.5rem', fontWeight: '600', paddingLeft: '35px' }}
+        >
+          Handpicked Videos for Your Journey
+        </p>
         <p
           onClick={() => navigate('/csr-dashboard')}
-          className="ui text"
-          style={{ cursor: 'pointer', fontWeight: '600', color: '#27279b' }} >
+          className="ui text "
+          style={{ width: '40%', cursor: 'pointer', fontSize: '1.5rem', fontWeight: '600', color: '#4406a2', textAlign: 'right' }}
+        >
           Click here for our CSR initiatives!
         </p>
+        </Row>
         <Grid vertical stackable columns={3} doubling className="elearning-grid">
-          {videos.map((video, index) => (
+          {videos.personalized.map((video, index) => (
+            <Grid.Column key={index}>
+              <Segment raised>
+                <Header as="h4" textAlign="center">
+                  {video.title}
+                </Header>
+                {/* <Embed id={video.youtubeId} source="youtube" iframe={{ allowFullScreen: true }} /> */}
+                <iframe
+                  src={video.youtubeId}
+                  width={358}
+                  title="Financial Inclusion in the Digital Age"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </Segment>
+            </Grid.Column>
+          ))}
+        </Grid>
+        <Row className="d-flex justify-content-between mt-4">
+          <p
+          className="ui text "
+          style={{ width: '40%', fontSize: '1.5rem', fontWeight: '600', paddingLeft: '35px', paddingBottom: '10px' }}
+        >
+          Learning Hub
+        </p>
+        </Row>
+        <Grid vertical stackable columns={3} doubling className="elearning-grid">
+          {videos.common.map((video, index) => (
             <Grid.Column key={index}>
               <Segment raised>
                 <Header as="h4" textAlign="center">

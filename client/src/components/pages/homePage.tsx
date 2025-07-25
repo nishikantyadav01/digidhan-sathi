@@ -3,12 +3,17 @@ import { Container, Header, Segment, Grid, Icon, Button } from 'semantic-ui-reac
 import WidgetTile from './widgetTile';
 import './homePage.css';
 import { useNavigate } from 'react-router-dom';
+import { Col, Row, Button as BootstrapButton } from 'react-bootstrap';
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
 
   const handleNotificationClick = () => {
     console.log('Notifications clicked!');
+  };
+
+  const handleEducationClick = () => {
+    navigate('/education');
   };
 
   return (
@@ -87,18 +92,50 @@ const HomePage: React.FC = () => {
           allowFullScreen
         />
       </Segment>
-      <Grid stackable columns={4} doubling centered>
-        <Grid.Row centered>
-          <Grid.Column width={4}>
-            <WidgetTile
-              title="Children's Higher Education"
-              image="src/assets/images/premium_photo.jpg"
-              description="Plan and save for your child’s academic future."
-              link="/education"
-            />
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+      <Row className="justify-content-center mb-5 wealth-section">
+        <Col>
+          <div className="financial-section">
+            <h3 className="display-4 fw-bold financial-heading">Understand. Plan. Prosper.</h3>
+            <p className="lead fw-semibold financial-subtext mt-3">
+              Learn to Build and Manage Wealth Smartly
+            </p>
+            <div className="mt-4">
+              <BootstrapButton onClick={handleEducationClick} className="financial-btn" size="lg">
+                Get Started
+              </BootstrapButton>
+            </div>
+          </div>
+        </Col>
+      </Row>
+      <Row className="justify-content-center mb-5 home-footer">
+        {/* Our Impact */}
+        <Col>
+          <section className="py-5">
+            <Container className="px-4 py-5 rounded shadow-sm">
+              <h2 className="fw-bold">Our Impact</h2>
+              <p className="text-muted mb-4">Making a difference in rural communities</p>
+              <Row className="g-4">
+                <Col md={3}>
+                  <h4 className="text-primary fw-bold">500+</h4>
+                  <p className="text-muted">Women Entrepreneurs</p>
+                </Col>
+                <Col md={3}>
+                  <h4 className="text-success fw-bold">100+</h4>
+                  <p className="text-muted">CSR Events</p>
+                </Col>
+                <Col md={3}>
+                  <h4 className="text-info fw-bold">50+</h4>
+                  <p className="text-muted">Corporate Partners</p>
+                </Col>
+                <Col md={3}>
+                  <h4 className="text-danger fw-bold">₹2Cr+</h4>
+                  <p className="text-muted">Business Value Created</p>
+                </Col>
+              </Row>
+            </Container>
+          </section>
+        </Col>
+      </Row>
     </div>
   );
 };
